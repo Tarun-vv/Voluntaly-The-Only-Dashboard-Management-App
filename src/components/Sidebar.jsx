@@ -6,7 +6,7 @@ import Logo from "./Logo";
 function Sidebar() {
   return (
     <div className="row-span-2 p-5 ">
-      <Logo width={40}/>
+      <Logo width={40} />
 
       <h1 className="mb-6 text-5xl font-bold">Voluntaly</h1>
       <ul className="flex flex-col gap-3 text-xl">

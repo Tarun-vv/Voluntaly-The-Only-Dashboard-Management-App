@@ -18,10 +18,13 @@ function Login() {
   if (isLoading) return <p>Logging you in</p>;
 
   return (
-    <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-60%] bg-gray-50 p-3">
-      <Logo width={25} />
+    <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-60%] bg-gray-50 p-10 flex gap-5">
+      <div>
+        <h1 className="mb-5 text-3xl font-bold">Log in to your account</h1>
+        <Logo width={55} />
+      </div>
       <form onSubmit={handleSubmit}>
-        <div className="mt-5 mb-5">
+        <div className="mb-5 ">
           <label htmlFor="email" className="mr-5 text-2xl ">
             Email address
           </label>
