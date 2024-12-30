@@ -8,7 +8,7 @@ function AppLayout() {
     <div className="grid grid-cols-[300px_1fr] h-screen grid-rows-[70px_1fr]">
       <Sidebar />
       <NavBar />
-      <main className="p-4 ">
+      <main className="p-4 bg-gray-50">
         <Outlet />
       </main>
     </div>

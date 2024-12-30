@@ -1,5 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Dashboard from "./features/dashboard/Dashboard";
+import Dashboard from "./features/dashboard/Dashboard.jsx";
 import AppLayout from "./components/AppLayout";
 import Campaigns from "./features/campaigns/Campaigns";
 import Events from "./features/events/Events";
@@ -12,6 +12,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import UserAnalytics from "./features/users/UserAnalytics";
 import UserDataset from "./features/users/UserDataset";
+import Login from "./features/auth/login/Login";
+import ProtectedRoutes from "./features/auth/ProtectedRoute";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,8 +50,15 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="/dashboard" />} />
+          <Route index element={<Navigate replace to="login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            element={
+              <ProtectedRoutes>
+                <AppLayout />
+              </ProtectedRoutes>
+            }
+          >
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/campaigns" element={<Campaigns />}>
               <Route index element={<Navigate replace to="analytics" />} />

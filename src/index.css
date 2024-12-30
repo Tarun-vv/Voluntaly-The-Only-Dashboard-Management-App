@@ -18,6 +18,11 @@
   color: white;
 }
 
+.sidebar-link.active {
+  /* background-color: ;tai */
+  background-color: #e5e7eb;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -33,6 +38,16 @@
   width: 1000px;
   height: 640px;
 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal__mini {
+  background-color: white;
+  width: 550px;
+  padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;

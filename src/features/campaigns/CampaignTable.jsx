@@ -1,9 +1,11 @@
 import { HiTrash } from "react-icons/hi2";
 import { formatDate } from "../../utils/formatDate";
 import { useDeleteCampaign } from "./useDeleteCampaign";
+import CampaignDeleteModal from "./CampaignDeleteModal";
+import { useState } from "react";
 
 function CampaignTable({ data }) {
-  const { isDeleting, deleteCampaign } = useDeleteCampaign();
+  const [selectedId, setSelectedId] = useState(null);
 
   return (
     <div className="grid grid-cols-[70px_150px_250px_200px_200px_200px_250px_200px] w-[930px] overflow-x-scroll">
@@ -28,7 +30,7 @@ function CampaignTable({ data }) {
         <>
           <button
             className="p-2 text-lg hover:cursor-pointer"
-            onClick={() => deleteCampaign(col.campaignId)}
+            onClick={() => setSelectedId(col.campaignId)}
           >
             <HiTrash />
           </button>
@@ -55,6 +57,12 @@ function CampaignTable({ data }) {
           </div>
         </>
       ))}
+      {selectedId && (
+        <CampaignDeleteModal
+          id={`${selectedId}`.padStart(3, "0")}
+          onClose={setSelectedId}
+        />
+      )}
     </div>
   );
 }

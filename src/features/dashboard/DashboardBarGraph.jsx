@@ -1,35 +1,29 @@
-import { useCampaigns } from "../campaigns/useCampaigns";
-import { useUsers } from "./useUsers";
-
 import Heading from "./../../components/Heading";
 
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
-  Cell,
 } from "recharts";
 
 const data = [
-  { name: "Volunteer", count: 10 },
-  { name: "Coordinator", count: 12 },
-  { name: "Manager", count: 20 },
+  { name: "Education for All", count: 10 },
+  { name: "Clean City Initiative", count: 12 },
+  { name: "Beach Cleaning", count: 20 },
 ];
 
-const colors = ["#8884d8", "#82ca9d", "#ffc658"]; // Array of colors for bars
+const colors = ["#8884d8", "#82ca9d", "#ffc658"];
 
-function UserRoleBarGraph() {
-  const { users, isLoading, error } = useUsers();
-  const { campaigns } = useCampaigns();
-
+function DashboardBarGraph() {
   return (
     <div className="p-3 pb-0 shadow-xl">
-      <Heading type='h3'>Total number of volunteers, managers and coordinators</Heading>
-      <ResponsiveContainer width="100%" height={270}>
+      <Heading type="h3">Track the highest performing campaigns</Heading>
+      <ResponsiveContainer width={260} height={270}>
         <BarChart
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
@@ -53,4 +47,4 @@ function UserRoleBarGraph() {
   );
 }
 
-export default UserRoleBarGraph;
+export default DashboardBarGraph;

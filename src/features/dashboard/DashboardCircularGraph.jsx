@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import { useUsers } from "./useUsers";
+import { useUsers } from "../users/useUsers";
 import { useCampaigns } from "../campaigns/useCampaigns";
 
 import Heading from "./../../components/Heading";
@@ -14,37 +14,37 @@ import Heading from "./../../components/Heading";
 const startDataLight = [
   {
     campaignName: "Clean City Initiative",
-    value: 7,
+    value: 7000,
     color: "#ef4444",
   },
   {
     campaignName: "Education for All",
-    value: 5,
+    value: 5000,
     color: "#f97316",
   },
   {
     campaignName: "Tree Planting Drive",
-    value: 3,
+    value: 3000,
     color: "#eab308",
   },
   {
     campaignName: "Disaster Relief Program",
-    value: 4,
+    value: 4000,
     color: "#84cc16",
   },
   {
     campaignName: "Community Health Camp",
-    value: 7,
+    value: 7000,
     color: "#22c55e",
   },
   {
     campaignName: "Animal Rescue Mission",
-    value: 2,
+    value: 2000,
     color: "#14b8a6",
   },
   {
     campaignName: "Food Distribution Camp",
-    value: 4,
+    value: 4700,
     color: "#3b82f6",
   },
 ];
@@ -59,7 +59,7 @@ const colors = [
   "#3b82f6",
 ];
 
-function UserVolunteerInEachCampaign() {
+function DashboardCircularGraph() {
   const { users, isLoading, error } = useUsers();
   const { campaigns } = useCampaigns();
 
@@ -81,9 +81,11 @@ function UserVolunteerInEachCampaign() {
     };
   });
 
+  if (isLoading) return <p>{isLoading}</p>;
+
   return (
     <div className="p-3 shadow-xl">
-      <Heading type="h3">Number of volunteers in each campaign</Heading>
+      <Heading type="h3">Funds allocated for each campaign</Heading>
       <ResponsiveContainer height={240} width="100%">
         <PieChart>
           <Pie
@@ -119,4 +121,4 @@ function UserVolunteerInEachCampaign() {
   );
 }
 
-export default UserVolunteerInEachCampaign;
+export default DashboardCircularGraph;

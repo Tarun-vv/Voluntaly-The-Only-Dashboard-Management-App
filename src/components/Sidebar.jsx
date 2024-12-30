@@ -5,6 +5,14 @@ import { HiOutlineHome } from "react-icons/hi2";
 function Sidebar() {
   return (
     <div className="row-span-2 p-5 ">
+      <div>
+        <img
+          src="../../public/hero.png"
+          alt=""
+          style={{ width: "40%", marginBottom: "30px", marginRight: "auto" }}
+        />
+      </div>
+
       <h1 className="mb-6 text-5xl font-bold">Voluntaly</h1>
       <ul className="flex flex-col gap-3 text-xl">
         <li>
@@ -18,33 +26,33 @@ function Sidebar() {
         <li>
           <NavLink
             to="/campaigns"
-            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200"
+            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200 sidebar-link"
           >
-            <span>campaigns</span>
+            <span>Campaigns</span>
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/events"
-            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200"
+            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200 sidebar-link"
           >
-            <span>events</span>
+            <span>Events</span>
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/users"
-            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200"
+            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200 sidebar-link"
           >
-            <span>users</span>
+            <span>Users</span>
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/profile"
-            className="flex items-center gap-4 px-6 py-3 hover:bg-gray-200"
+            className="flex items-center gap-4 px-6 py-3 sidebar-link hover:bg-gray-200"
           >
-            <span>profile</span>
+            <span>Profile</span>
           </NavLink>
         </li>
       </ul>
