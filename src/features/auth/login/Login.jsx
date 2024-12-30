@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLogin } from "./useLogin";
+import Logo from "../../../components/Logo";
 
 function Login() {
   const [email, setEmail] = useState("test@example.com");
@@ -17,35 +18,42 @@ function Login() {
   if (isLoading) return <p>Logging you in</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email" className="mr-5">
-          Email address
-        </label>
-        <input
-          type="text"
-          id="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
+    <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-60%] bg-gray-50 p-3">
+      <Logo width={25} />
+      <form onSubmit={handleSubmit}>
+        <div className="mt-5 mb-5">
+          <label htmlFor="email" className="mr-5 text-2xl ">
+            Email address
+          </label>
+          <input
+            type="text"
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-2 text-xl bg-gray-200 rounded-lg"
+          />
+        </div>
 
-      <div>
-        <label htmlFor="password" className="mr-5">
-          Password
-        </label>
-        <input
-          type="text"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+        <div className="mb-6">
+          <label htmlFor="password" className="mr-5 text-2xl">
+            Password
+          </label>
+          <input
+            type="text"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="p-2 text-xl bg-gray-200 rounded-lg"
+          />
+        </div>
 
-      <button className="p-2 text-white bg-blue-400 rounded-lg">Log in</button>
-    </form>
+        <button className="w-full p-2 text-white bg-blue-400 rounded-lg">
+          Log in
+        </button>
+      </form>
+    </div>
   );
 }
 

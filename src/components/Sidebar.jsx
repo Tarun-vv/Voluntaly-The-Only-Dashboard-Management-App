@@ -1,17 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 import { HiOutlineHome } from "react-icons/hi2";
+import Logo from "./Logo";
 
 function Sidebar() {
   return (
     <div className="row-span-2 p-5 ">
-      <div>
-        <img
-          src="../../public/hero.png"
-          alt=""
-          style={{ width: "40%", marginBottom: "30px", marginRight: "auto" }}
-        />
-      </div>
+      <Logo width={40}/>
 
       <h1 className="mb-6 text-5xl font-bold">Voluntaly</h1>
       <ul className="flex flex-col gap-3 text-xl">
