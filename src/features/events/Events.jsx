@@ -4,6 +4,9 @@ import EventModal from "./EventModal";
 import { useEvents } from "./useEvents";
 import { useCampaigns } from "../campaigns/useCampaigns";
 import { useSearchParams } from "react-router-dom";
+import EventAddModal from "./EventAddModal";
+import { HiTrash } from "react-icons/hi2";
+import { useDeleteEvent } from "./useDeleteEvent";
 
 function Events() {
   const { isLoading, error, events } = useEvents();
@@ -24,13 +27,28 @@ function Events() {
   const eventSortedCampaigns = events?.filter(
     (event) => event.campaign_id === eventValue
   );
-  console.log(eventSortedCampaigns);
+
+  const [open, setOpen] = useState(false);
+  function handleSetOpen() {
+    setOpen((open) => !open);
+  }
+  function handleCloseAddModal() {
+    setOpen(false);
+  }
+
+  const { isDeleting, deleteEvent } = useDeleteEvent();
 
   if (isLoading || isCampaigns) return <p>Loading...</p>;
 
   return (
     <div>
-      <div className="mb-7">
+      {open && (
+        <EventAddModal
+          onCloseAddModal={handleCloseAddModal}
+          eventValue={eventValue}
+        />
+      )}
+      <div className="flex items-center justify-between mb-7">
         <select
           className="p-2 text-xl bg-gray-100 rounded-lg"
           onChange={handleChange}
@@ -41,6 +59,12 @@ function Events() {
             </option>
           ))}
         </select>
+        <button
+          className="p-2 text-base text-white bg-green-500 rounded-lg"
+          onClick={handleSetOpen}
+        >
+          Add a new event
+        </button>
       </div>
       <div className="grid grid-cols-2 gap-4">
         {selectedEvent && (
@@ -49,7 +73,13 @@ function Events() {
 
         {eventSortedCampaigns.length > 0 ? (
           eventSortedCampaigns?.map((event) => (
-            <div key={event.name} className="p-2 shadow-xl">
+            <div key={event.name} className="relative p-2 shadow-xl">
+              <button
+                className="absolute top-3 right-3"
+                onClick={() => deleteEvent(event.id)}
+              >
+                <HiTrash className="p-1 text-3xl bg-gray-200 rounded-full" />
+              </button>
               <ul className="mb-3">
                 <li className="text-2xl font-bold">{event.name}</li>
                 <li className="text-lg">
@@ -73,7 +103,9 @@ function Events() {
             </div>
           ))
         ) : (
-          <p className="text-lg text-red-400">There are no events planned for this campaign</p>
+          <p className="text-lg text-red-400">
+            There are no events planned for this campaign
+          </p>
         )}
       </div>
     </div>

@@ -38,6 +38,25 @@ export async function getAllVolunteers() {
   return data;
 }
 
+export async function addEvent(newEvent) {
+  const { data, error } = await supabase
+    .from("events")
+    .insert([newEvent])
+    .select();
+
+  if (error) console.log(error);
+
+  return data;
+}
+
+export async function deleteEvent(id) {
+  const { data, error } = await supabase.from("events").delete().eq("id", id);
+
+  if (error) throw new Error("Cabin could not be deleted");
+
+  return data;
+}
+
 // NOTE: LOGIN
 export async function login({ email, password }) {
   const { data, error } = await supabase.auth.signInWithPassword({
